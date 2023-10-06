@@ -15,6 +15,9 @@ import {Errors} from "./libraries/Errors.sol";
 // See https://github.com/mudgen/diamond-2-hardhat/blob/main/contracts/Diamond.sol
 // All code taken from diamond implementation, other than init code
 
+
+// Adding diamondStandart to the contract
+
 contract Diamond {
     AppStorage internal s;
 
