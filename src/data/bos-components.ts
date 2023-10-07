@@ -73,6 +73,7 @@ export const componentsByNetworkId: Record<
         width: "auto",
         height: "200px",
         gif: true,
+        fn: () => window.location.href = "/",
       },
     },
   },
