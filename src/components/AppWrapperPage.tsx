@@ -99,7 +99,7 @@ export function AppWrapperPage(props: Props) {
       {props.meta && <MetaTags {...props.meta} />}
 
       <Wrapper>
-        <Component src={"home"} />
+        <Component src={"app_hero"} />
       </Wrapper>
     </>
   );

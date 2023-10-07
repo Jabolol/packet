@@ -67,10 +67,9 @@ export const componentsByNetworkId: Record<
         description: "Normally, users exchange this amount of data.",
       },
     },
-    yaypeg: {
-      id: getComponent`Yaypeg`,
+    app_hero: {
+      id: getComponent`AppHero`,
       props: {
-        address: "0xE210058ca7710330ad56Cf38c69F516b8D325701",
         width: "auto",
         height: "200px",
         gif: true,
