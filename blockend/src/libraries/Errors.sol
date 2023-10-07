@@ -12,4 +12,5 @@ library Errors {
     error UserIsFrozen(address _user);
     error NotEnoughDataAvailable();
     error NotEnoughDataEscrowed();
+    error ErrorWhileDeployingToken();
 }

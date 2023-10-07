@@ -9,11 +9,13 @@ library STypes {
 
     struct Teleoperator {
         address adminAddress;
+        address dataTokenAddress; // mobile data token address (ERC20) each erc20 is a megabyte
         uint256 transactionFee;
         uint256 withdrawalFee;
         uint256 totalDataAvailable;
         uint256 totalDataSold;
         uint256 pricePerMegaByte; // price per mega byte -> 1000 mega bytes = 1 giga byte
+        
     }
 
     // data availabe outside the system

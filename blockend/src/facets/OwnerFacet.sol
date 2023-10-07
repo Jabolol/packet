@@ -5,15 +5,18 @@ import {Modifiers} from "../libraries/AppStorage.sol";
 import {STypes} from "../libraries/DataTypes.sol";
 import {Errors} from "../libraries/Errors.sol";
 
+import {DataToken} from "../tokens/DataToken.sol";
+
 // Qadd all the events
 
 contract OwnerFacet is Modifiers {
-
     function addTeleoperator(
         address teleoperator,
         bytes4 teleoperatorSelector,
         uint8 transactionFee,
-        uint8 withdrawalFee
+        uint8 withdrawalFee,
+        string calldata name, // se if with memory maybe it works
+        string calldata symbol
     ) external onlyAdmin {
         STypes.Teleoperator memory Teleoperator = s.teleoperators[teleoperatorSelector];
 
@@ -21,6 +24,12 @@ contract OwnerFacet is Modifiers {
             revert Errors.TeleoperatorAlreadyAdded(teleoperator);
         }
 
+        DataToken Datatoken = new DataToken(address(this), name, symbol);
+        if (address(Datatoken) == address(0)) {
+            revert Errors.ErrorWhileDeployingToken();
+        }
+
+        Teleoperator.dataTokenAddress = address(Datatoken);
         Teleoperator.adminAddress = teleoperator;
         Teleoperator.transactionFee = transactionFee;
         Teleoperator.withdrawalFee = withdrawalFee;
