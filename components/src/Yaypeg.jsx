@@ -23,6 +23,11 @@ const getYaypeg = (address) => {
   );
 };
 
+const ImageStyle = styled.img`
+    ${props.styles}
+    border-radius: 10px;
+`;
+
 const Yaypeg = ({ address, width, height, gif }) => {
   const [img, setImg] = useState("");
 
@@ -32,7 +37,7 @@ const Yaypeg = ({ address, width, height, gif }) => {
 
   if (gif) {
     return (
-      <img
+      <ImageStyle
         src={`https://firebasestorage.googleapis.com/v0/b/yaypegsnft.appspot.com/o/collection%2F${getId(
           address
         )}.gif?alt=media&firebase=undefined`}
@@ -46,7 +51,7 @@ const Yaypeg = ({ address, width, height, gif }) => {
     return <p>Loading...</p>;
   }
 
-  return <img src={img} width={width} height={height} />;
+  return <ImageStyle src={img} width={width} height={height} />;
 };
 
 return <Yaypeg {...props} />;
