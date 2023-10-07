@@ -4,22 +4,38 @@ type NetworkComponents = {
   [k: string]: { id: string; props?: Record<string, unknown> };
 };
 
+const getComponent = (...[name]: TemplateStringsArray[]) =>
+  `c5d50293c3a3ed146051462e6e02e469acda10b517bfffeb3d34652076f0cb7c/widget/${name}`;
+
 export const componentsByNetworkId: Record<
   NetworkId,
   NetworkComponents | undefined
 > = {
-  testnet: {
-    home: { id: "near-examples.testnet/widget/HelloNEAR" },
-  },
-
+  testnet: {},
   mainnet: {
-    home: {
-      id:
-        "c5d50293c3a3ed146051462e6e02e469acda10b517bfffeb3d34652076f0cb7c/widget/HomeWhatIsBOS",
+    home: { id: getComponent`Hero` },
+    feature_data: {
+      id: getComponent`ImageWidget`,
       props: {
-        author: ["Jabolo", "Alex", "David"],
-        text:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+        title: "Interoperable",
+        description: "Never worry again about carrier lock-in.",
+        icon: "switch",
+      },
+    },
+    feature_privacy: {
+      id: getComponent`ImageWidget`,
+      props: {
+        title: "Private",
+        description: "Your data is yours. We limit access to your data.",
+        icon: "eye",
+      },
+    },
+    feature_global: {
+      id: getComponent`ImageWidget`,
+      props: {
+        title: "Global",
+        description: "Swap data with anyone, anywhere in the world.",
+        icon: "world",
       },
     },
   },

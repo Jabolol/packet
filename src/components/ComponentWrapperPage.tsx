@@ -1,9 +1,8 @@
-import { useEffect } from 'react';
-
-import { VmComponent } from '@/components/vm/VmComponent';
-import { useCurrentComponentStore } from '@/stores/current-component';
-import { MetaTags } from './MetaTags';
-import styled from 'styled-components';
+import { VmComponent } from "@/components/vm/VmComponent";
+import { componentsByNetworkId } from "@/data/bos-components";
+import { MetaTags } from "./MetaTags";
+import styled from "styled-components";
+import { Chart } from "./Chart";
 
 type Props = {
   componentProps?: Record<string, unknown>;
@@ -15,8 +14,31 @@ type Props = {
 };
 
 const Wrapper = styled.div`
-  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 50px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
 `;
+
+const FeatureWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  max-width: 100%;
+`;
+
+const Component = ({ src }: { src: string }) => (
+  <VmComponent
+    src={componentsByNetworkId["mainnet"]![src].id}
+    props={componentsByNetworkId["mainnet"]![src].props}
+  />
+);
 
 export function ComponentWrapperPage(props: Props) {
   return (
@@ -24,7 +46,13 @@ export function ComponentWrapperPage(props: Props) {
       {props.meta && <MetaTags {...props.meta} />}
 
       <Wrapper>
-        <VmComponent src={props.src} props={props.componentProps} />
+        <Component src={"home"} />
+        <FeatureWrap>
+          <Component src={"feature_data"} />
+          <Component src={"feature_privacy"} />
+          <Component src={"feature_global"} />
+        </FeatureWrap>
+        <Chart />
       </Wrapper>
     </>
   );
