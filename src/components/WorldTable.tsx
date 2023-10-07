@@ -9,10 +9,19 @@ const generateRandomEthereumAddress = () =>
     ).join("")
   }`;
 
+const getRandomDateInThisWeek = () => {
+  const currentDate = new Date();
+  const startOfWeek = new Date(currentDate);
+  startOfWeek.setDate(currentDate.getDate() - currentDate.getDay());
+  const randomOffset = Math.floor(Math.random() * 7);
+  return new Date(startOfWeek.getTime() + randomOffset * 24 * 60 * 60 * 1000)
+    .toLocaleString();
+};
+
 const generateRandomData = () =>
   Array.from({ length: 50 }, () => ({
     mebibytes: Math.floor(Math.random() * 10000),
-    date: new Date().toLocaleDateString(),
+    date: getRandomDateInThisWeek(),
     from: generateRandomEthereumAddress(),
     to: generateRandomEthereumAddress(),
   }));
