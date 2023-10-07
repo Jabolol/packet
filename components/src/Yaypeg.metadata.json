@@ -1,0 +1,12 @@
+{
+  "description": "## Yaypeg Generator!\n\nYour Ethereum address representation as a Yaypeg! Currently the illustration image.\n\n```ts\nreturn <Yaypeg width={width} height={height} address={address} gif />\n```\n\nBy [`Jabolo`](https://jabolo.deno.dev/)",
+  "image": {
+    "ipfs_cid": "bafkreicausmbx6crpgbuge53lfcfn7zq4dujp2jj6otkmgmzutgtnhueay"
+  },
+  "name": "Yaypeg",
+  "tags": {
+    "icons": "",
+    "svg": "",
+    "near": ""
+  }
+}

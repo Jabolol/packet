@@ -18,14 +18,13 @@ const SectionHeroStyle = styled.div`
     cursor: pointer;
     background-color: #0e6efd;
     color: white;
-  }
-
-  .hero-content:hover {
+    .hero-content {
     .hero-data {
         .icon {
             color: white;
         }
     }
+  }
   }
 
   .hero-content {
