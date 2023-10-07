@@ -38,10 +38,6 @@ const LocationStyle = styled.div`
 `;
 
 function Hero({ address, fn }) {
-  useEffect(() => {
-    if (!address && fn) fn();
-  }, []);
-
   const beginning = address.substring(0, 6);
   const end = address.substring(address.length - 4);
   const fmt = `${beginning}...${end}`;
