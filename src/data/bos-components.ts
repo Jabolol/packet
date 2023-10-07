@@ -15,6 +15,9 @@ export const componentsByNetworkId: Record<
   mainnet: {
     home: {
       id: getComponent`Hero`,
+      props: {
+        redirect: (path: string) => window.location.href = path,
+      },
     },
     feature_data: {
       id: getComponent`ImageWidget`,
@@ -62,6 +65,15 @@ export const componentsByNetworkId: Record<
         cipher: "3 GiB",
         title: "average exchange",
         description: "Normally, users exchange this amount of data.",
+      },
+    },
+    yaypeg: {
+      id: getComponent`Yaypeg`,
+      props: {
+        address: "0xE210058ca7710330ad56Cf38c69F516b8D325701",
+        width: "auto",
+        height: "200px",
+        gif: true,
       },
     },
   },
