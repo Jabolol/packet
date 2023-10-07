@@ -45,6 +45,10 @@ contract Diamond {
         ds.supportedInterfaces[type(IDiamondCut).interfaceId] = true;
         ds.supportedInterfaces[type(IDiamondLoupe).interfaceId] = true;
         ds.supportedInterfaces[type(IERC20).interfaceId] = true; // data tokens will be ERC20
+
+        // !set initial variables
+        // @audit add here the necessary appStorage variables
+      
     }
 
     // Find facet for function that is called and execute the
