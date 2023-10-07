@@ -13,7 +13,13 @@ export const componentsByNetworkId: Record<
 > = {
   testnet: {},
   mainnet: {
-    home: { id: getComponent`Hero` },
+    home: {
+      id: getComponent`Hero`,
+      props: {
+        // TODO(jabolo): Detect if the user is logged in
+        ethereum: () => !(window.ready = true),
+      },
+    },
     feature_data: {
       id: getComponent`ImageWidget`,
       props: {
@@ -36,6 +42,30 @@ export const componentsByNetworkId: Record<
         title: "Global",
         description: "Swap data with anyone, anywhere in the world.",
         icon: "world",
+      },
+    },
+    data_count: {
+      id: getComponent`DataWidget`,
+      props: {
+        cipher: "200k",
+        title: "active users",
+        description: "Last month, this many users have used the marketplace.",
+      },
+    },
+    data_tb: {
+      id: getComponent`DataWidget`,
+      props: {
+        cipher: "50 TiB",
+        title: "total used data",
+        description: "Users around the world have used this huge amount!",
+      },
+    },
+    data_mean: {
+      id: getComponent`DataWidget`,
+      props: {
+        cipher: "3 GiB",
+        title: "average exchange",
+        description: "Normally, users exchange this amount of data.",
       },
     },
   },

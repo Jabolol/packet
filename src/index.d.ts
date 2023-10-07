@@ -6,4 +6,5 @@ declare module 'nanoid' {
 
 interface Window {
   zE: (name: string, method: string) => void | undefined;
+  ready: boolean | undefined;
 }
