@@ -37,7 +37,11 @@ const LocationStyle = styled.div`
   color: #808080;
 `;
 
-function Hero({ address }) {
+function Hero({ address, fn }) {
+  useEffect(() => {
+    if (!address && fn) fn();
+  }, []);
+
   const beginning = address.substring(0, 6);
   const end = address.substring(address.length - 4);
   const fmt = `${beginning}...${end}`;
