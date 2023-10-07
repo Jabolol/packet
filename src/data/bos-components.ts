@@ -15,10 +15,6 @@ export const componentsByNetworkId: Record<
   mainnet: {
     home: {
       id: getComponent`Hero`,
-      props: {
-        // TODO(jabolo): Detect if the user is logged in
-        ethereum: () => !(window.ready = true),
-      },
     },
     feature_data: {
       id: getComponent`ImageWidget`,
