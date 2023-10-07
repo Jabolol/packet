@@ -4,7 +4,7 @@ import { Line } from "react-chartjs-2";
 
 ChartJS.register(...registerables);
 
-const labels = ["January", "February", "March", "April", "May", "June", "July"];
+const labels = ["March", "April", "May", "June", "July", "August", "September"];
 
 const options = {
   responsive: true,
