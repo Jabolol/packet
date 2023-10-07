@@ -3,6 +3,7 @@ import { componentsByNetworkId } from "@/data/bos-components";
 import { MetaTags } from "./MetaTags";
 import styled, { keyframes } from "styled-components";
 import { useEffect, useState } from "react";
+import { WorldTable } from "./WorldTable";
 
 type Props = {
   componentProps?: Record<string, unknown>;
@@ -100,6 +101,7 @@ export function AppWrapperPage(props: Props) {
 
       <Wrapper>
         <Component src={"app_hero"} />
+        <WorldTable />
       </Wrapper>
     </>
   );
