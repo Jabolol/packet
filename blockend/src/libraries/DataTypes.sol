@@ -7,8 +7,12 @@ pragma solidity 0.8.19;
 library STypes {
     // 2 slots
 
+    // add name to teleopartor
+
     struct Teleoperator {
-        address adminAddress;
+        // SLOT 1: 160 + 88 + 88 + 8 = 344 (24 unused)
+        string name;
+        address ownerAddress;
         address dataTokenAddress; // mobile data token address (ERC20) each erc20 is a megabyte
         uint256 transactionFee;
         uint256 withdrawalFee;
@@ -24,6 +28,17 @@ library STypes {
         address addr;
         uint256 mobileDataEscrowed;
         bool isFrozen; // 8 bits
+    }
+    // selling or just trueque ?
+    struct Auction {
+        address seller;
+        uint256 startPrice;
+        uint256 reservePrice;
+        uint256 endBlock;
+        uint256 startBlock;
+        uint256 megaBytesToSell;
+        bool active;
+        bytes4 teleoperatorSelector;
     }
 }
 // @dev DataTypes only used in memory

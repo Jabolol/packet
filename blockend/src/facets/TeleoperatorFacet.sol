@@ -6,21 +6,23 @@ import {STypes} from "../libraries/DataTypes.sol";
 
 import {Errors} from "../libraries/Errors.sol";
 
+import {Events} from "../libraries/Events.sol";
+
 contract TelopertorFacet is Modifiers {
-    function setUsers(address[] calldata users, uint80[] calldata allocatedData)
-        external
-        onlyValidTeleoperator(msg.sender)
+    function setUsers(address[] calldata users) external {
+        _setUsers(users, s.adminToTeleoperatorSelector[msg.sender]);
+    }
+
+    function _setUsers(address[] memory users, bytes4 teleoperatorSelector)
+        internal
+        onlyValidTeleoperator(teleoperatorSelector)
     {
-        bytes4 teleoperatorSelector = s.adminToTeleoperatorSelector[msg.sender];
-        if (s.teleoperators[teleoperatorSelector].adminAddress != msg.sender) {
+        uint64 i;
+        if (s.teleoperators[teleoperatorSelector].ownerAddress != msg.sender) {
             revert Errors.NotAdmin();
         }
 
-        if (users.length != allocatedData.length) {
-            revert Errors.invalidInputLength();
-        }
-
-        for (uint64 i = 0; i < users.length; i++) {
+        for (i = 0; i < users.length; i++) {
             s.teleoperatorUser[teleoperatorSelector][users[i]] = STypes.TeleoperatorUser({ // this can be done with selecotr
                 addr: users[i],
                 mobileDataEscrowed: 0,
@@ -28,6 +30,8 @@ contract TelopertorFacet is Modifiers {
             });
             s.existInTeloperator[teleoperatorSelector][users[i]] = true;
         }
+
+        emit Events.usersAdded(teleoperatorSelector, users, i);
     }
 
     function setMobileDataForSell(uint256 amount, uint256 pricePerMega) external {
@@ -37,16 +41,26 @@ contract TelopertorFacet is Modifiers {
     function _setMobileDataForSell(uint256 dataForSell, bytes4 teleoperatorSelector, uint256 pricePerMega)
         internal
         onlyTeleoperatorAdmin(teleoperatorSelector)
+        onlyValidTeleoperator(teleoperatorSelector)
     {
         s.teleoperators[teleoperatorSelector].totalDataAvailable += dataForSell;
         s.teleoperators[teleoperatorSelector].pricePerMegaByte = pricePerMega;
+        emit Events.dataAvailableAdded(teleoperatorSelector, dataForSell, pricePerMega);
     }
 
-    function decreaseMobileAvailableData(uint256 dataForSell, bytes4 teleoperatorSelector)
-        external
-        onlyValidTeleoperator(msg.sender)
+    function decreaseMobileAvailableData(uint256 dataForSell) external {
+        _decreaseMobileAvailableData(dataForSell, s.adminToTeleoperatorSelector[msg.sender]);
+    }
+
+    function _decreaseMobileAvailableData(uint256 dataForSell, bytes4 teleoperatorSelector)
+        internal
+        onlyTeleoperatorAdmin(teleoperatorSelector)
+        onlyValidTeleoperator(teleoperatorSelector)
     {
         s.teleoperators[teleoperatorSelector].totalDataAvailable -= dataForSell;
+        emit Events.decreaseMobileAvailableData(
+            teleoperatorSelector, dataForSell, s.teleoperators[teleoperatorSelector].totalDataAvailable
+        );
     }
 
     function updatPrice(uint256 price) external {
@@ -58,9 +72,21 @@ contract TelopertorFacet is Modifiers {
         onlyTeleoperatorAdmin(teleoperatorSelector)
     {
         s.teleoperators[teleoperatorSelector].pricePerMegaByte = price;
+        emit Events.pricePerMegaByteUpdated(teleoperatorSelector, price);
     }
 
-    // add admin addresses
-    // only main admin/owner can add new admins
-    function addAdminAddress(address[] calldata admins) external onlyValidTeleoperator(msg.sender) {}
+    function addAdminAddress(address[] calldata admins) external {
+        _addAdminAdress(admins, s.adminToTeleoperatorSelector[msg.sender]);
+    }
+
+    function _addAdminAdress(address[] calldata admins, bytes4 teleoperatorSelector)
+        internal
+        onlyTeleoperatorOwner(teleoperatorSelector)
+    {
+        uint64 i;
+        for (i = 0; i < admins.length; i++) {
+            s.isTeleoperatorAdmin[teleoperatorSelector][admins[i]] = true;
+        }
+        emit Events.addminAddressesAdded(teleoperatorSelector, admins, i);
+    }
 }

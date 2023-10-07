@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.19;
+
 import {Modifiers} from "../libraries/AppStorage.sol";
 import {STypes, MTypes} from "../libraries/DataTypes.sol";
 
 import {Errors} from "../libraries/Errors.sol";
+import {Events} from "../libraries/Events.sol";
 
 contract UserFacet is Modifiers {
     // @dev user can escrow data, withdraw data....abi
@@ -24,13 +26,11 @@ contract UserFacet is Modifiers {
 
         user.mobileDataEscrowed += amount;
         s.teleoperatorUser[teloperatorSelector][msg.sender] = user;
+
+        emit Events.dataEscrowed(teloperatorSelector, userAddress, amount);
     }
 
-    // exit mint
-
-    // user address from the front / metamaks or abstracted
-
-    // add the erc20 creation
+    // ! NEED TO WITHDRAW + FEE IN THE CONTRACT ERC20
 
     function exitTotalOrParcial(bytes4 teleoperatorSelector, uint88 amount, address userAddress)
         external
@@ -53,11 +53,6 @@ contract UserFacet is Modifiers {
         }
 
         s.teleoperatorUser[teleoperatorSelector][msg.sender] = user;
+        emit Events.dataWithdrawn(teleoperatorSelector, userAddress, amount);
     }
-
-    // minht the nft the data token  (mint + decrease the data available)
-    function exitTotalOrParicalAndWithdraw() external view {}
-
-    // function to enter the sytem with the token (burn + increase the data available)
-    function addTeleToken() external view {}
 }

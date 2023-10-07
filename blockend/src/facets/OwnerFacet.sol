@@ -7,6 +7,7 @@ import {Errors} from "../libraries/Errors.sol";
 
 import {DataToken} from "../tokens/DataToken.sol";
 
+import {Events} from "../libraries/Events.sol";
 // Qadd all the events
 
 contract OwnerFacet is Modifiers {
@@ -15,12 +16,13 @@ contract OwnerFacet is Modifiers {
         bytes4 teleoperatorSelector,
         uint8 transactionFee,
         uint8 withdrawalFee,
+        string calldata teleoperatorName,
         string calldata name, // se if with memory maybe it works
         string calldata symbol
     ) external onlyAdmin {
         STypes.Teleoperator memory Teleoperator = s.teleoperators[teleoperatorSelector];
 
-        if (Teleoperator.adminAddress != address(0)) {
+        if (Teleoperator.ownerAddress != address(0)) {
             revert Errors.TeleoperatorAlreadyAdded(teleoperator);
         }
 
@@ -29,14 +31,25 @@ contract OwnerFacet is Modifiers {
             revert Errors.ErrorWhileDeployingToken();
         }
 
+        if (s.isValidteleoperator[teleoperatorSelector]) {
+            revert Errors.TeleoperatorAlreadyAdded(teleoperator);
+        }
+
         Teleoperator.dataTokenAddress = address(Datatoken);
-        Teleoperator.adminAddress = teleoperator;
+        Teleoperator.ownerAddress = teleoperator;
         Teleoperator.transactionFee = transactionFee;
         Teleoperator.withdrawalFee = withdrawalFee;
+        Teleoperator.name = teleoperatorName;
         s.isTeleoperatorAdmin[teleoperatorSelector][msg.sender] = true;
-        s.isValidteleoperator[teleoperator] = true;
+        s.isValidteleoperator[teleoperatorSelector] = true;
         s.adminToTeleoperatorSelector[teleoperator] = teleoperatorSelector;
         s.isTeleoperatorAdmin[teleoperatorSelector][teleoperator] = true;
         s.teleoperators[teleoperatorSelector] = Teleoperator;
+
+        // event teleoperatorAdded(bytes4 indexed teleoperatorSelector, address indexed ownerAddress, address indexed dataTokenAddress, uint256 transactionFee, uint256 withdrawalFee, uint256 pricePerMegaByte);
+
+        emit Events.teleoperatorAdded(
+            teleoperatorSelector, teleoperator, address(Datatoken), transactionFee, withdrawalFee, 0
+        );
     }
 }

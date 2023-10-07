@@ -13,4 +13,14 @@ library Errors {
     error NotEnoughDataAvailable();
     error NotEnoughDataEscrowed();
     error ErrorWhileDeployingToken();
+    error InvalidTeleoperator();
+    error InvalidStartPrice();
+
+    error InvalidEndBlock();
+
+    error InvalidMegaBytesToSell();
+    error AuctionNotActive();
+    error InvalidAuctionId();
+    error InsufficientFundsSent();
+
 }
