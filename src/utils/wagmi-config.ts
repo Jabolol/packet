@@ -1,14 +1,19 @@
+import { WagmiConfig, createConfig, configureChains, mainnet } from "wagmi";
+import { publicProvider } from "wagmi/providers/public";
+import { arthera } from "./arthera-chain";
+import { createPublicClient, http } from "viem";
 
-import { WagmiConfig, createConfig, configureChains, mainnet } from 'wagmi'
-import { publicProvider } from 'wagmi/providers/public'
-import { arthera } from './arthera-chain'
-
-const { chains, publicClient, webSocketPublicClient } = configureChains(
+export const { chains, publicClient, webSocketPublicClient } = configureChains(
     [arthera],
-    [publicProvider()],
-  )
+    [publicProvider()]
+);
 
-  export const config = createConfig({
+export const config = createConfig({
     publicClient,
     webSocketPublicClient,
-  })
+});
+
+export const publicClientCustom = createPublicClient({
+  chain: mainnet,
+  transport: http()
+})
