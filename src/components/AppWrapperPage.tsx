@@ -102,6 +102,11 @@ export function AppWrapperPage(props: Props) {
       <Wrapper>
         <Component src={"app_hero"} />
         <WorldTable />
+        <FeatureWrap>
+          <Component src={"app_sent"} />
+          <Component src={"app_received"} />
+          <Component src={"data_mean"} />
+        </FeatureWrap>
       </Wrapper>
     </>
   );

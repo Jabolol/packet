@@ -76,5 +76,21 @@ export const componentsByNetworkId: Record<
         fn: () => void 0,
       },
     },
+    app_received: {
+      id: getComponent`DataWidget`,
+      props: {
+        cipher: "1.0 GiB",
+        title: "of data received",
+        description: "0x1234...1234 sent you this amount of data.",
+      },
+    },
+    app_sent: {
+      id: getComponent`DataWidget`,
+      props: {
+        cipher: "0.6 GiB",
+        title: "of data sent",
+        description: "you sent this amount of data to 0x1234...1234.",
+      },
+    },
   },
 };
