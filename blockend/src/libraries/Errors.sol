@@ -6,4 +6,10 @@ library Errors {
     error TeleoperatorNotValid(address _teleoperator);
     error NotAdmin();
     error TeleoperatorAlreadyAdded(address _teleoperator);
+    error NotDiamond();
+    error userNotFoundInTeleoperator(address _user);
+    error invalidInputLength();
+    error UserIsFrozen(address _user);
+    error NotEnoughDataAvailable();
+    error NotEnoughDataEscrowed();
 }
