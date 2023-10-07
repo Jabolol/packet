@@ -3,11 +3,11 @@ pragma solidity 0.8.19;
 
 import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-
-// maybe change diamond and put admin...
-
 contract DataToken is ERC20 {
     address private immutable diamond;
+    uint256 public tranferFee;
+    uint256 public totalFee;
+    address public feeCollector;
 
     error NotDiamond();
 
@@ -15,7 +15,7 @@ contract DataToken is ERC20 {
         diamond = diamondAddr;
     }
 
-    modifier onlyDiamond() { // only diamond
+    modifier onlyDiamond() {
         if (msg.sender != diamond) {
             revert NotDiamond();
         }
@@ -30,6 +30,26 @@ contract DataToken is ERC20 {
         _burn(account, amount);
     }
 
-    //! in beforeTransfer if not mint or the sender is the diamond, revert) 
+    function transfer(address to, uint256 amount) public virtual override returns (bool) {
+        uint256 amountBefore = amount;
+        amount = amount * (100 - tranferFee) / 100;
+        uint256 fee = amountBefore - amount;
+        _IncreseTotalCollectedFee(fee);
+        _transfer(_msgSender(), to, amount);
+        return true;
+    }
 
+    function setTransferFee(uint256 NewFee) external onlyDiamond {
+        tranferFee = NewFee;
+    }
+
+    function _IncreseTotalCollectedFee(uint256 NewFee) internal onlyDiamond {
+        totalFee += NewFee;
+    }
+
+    function withdrawFee() external onlyDiamond returns (uint256) {
+        totalFee = 0;
+        _transfer(feeCollector, diamond, totalFee);
+        return (totalFee);
+    }
 }

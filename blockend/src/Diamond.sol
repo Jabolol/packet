@@ -15,7 +15,6 @@ import {Errors} from "./libraries/Errors.sol";
 // See https://github.com/mudgen/diamond-2-hardhat/blob/main/contracts/Diamond.sol
 // All code taken from diamond implementation, other than init code
 
-
 // Adding diamondStandart to the contract
 
 contract Diamond {
@@ -48,7 +47,6 @@ contract Diamond {
 
         // !set initial variables
         // @audit add here the necessary appStorage variables
-      
     }
 
     // Find facet for function that is called and execute the

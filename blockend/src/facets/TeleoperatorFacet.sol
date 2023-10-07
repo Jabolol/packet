@@ -79,6 +79,8 @@ contract TelopertorFacet is Modifiers {
         _addAdminAdress(admins, s.adminToTeleoperatorSelector[msg.sender]);
     }
 
+    // set fees...
+
     function _addAdminAdress(address[] calldata admins, bytes4 teleoperatorSelector)
         internal
         onlyTeleoperatorOwner(teleoperatorSelector)

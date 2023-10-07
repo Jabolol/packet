@@ -22,6 +22,9 @@ contract OwnerFacet is Modifiers {
     ) external onlyAdmin {
         STypes.Teleoperator memory Teleoperator = s.teleoperators[teleoperatorSelector];
 
+        if (withdrawalFee > 100 || transactionFee > 100) {
+            revert Errors.FeeTooHigh();
+        }
         if (Teleoperator.ownerAddress != address(0)) {
             revert Errors.TeleoperatorAlreadyAdded(teleoperator);
         }

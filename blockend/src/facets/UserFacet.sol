@@ -32,16 +32,14 @@ contract UserFacet is Modifiers {
         emit Events.dataEscrowed(teloperatorSelector, userAddress, amount);
     }
 
-    // ! NEED TO WITHDRAW + FEE IN THE CONTRACT ERC20
-    // -> call by the user and given tokens represeing the data
-    // ->
-
-    // has exit the system before and now return to claim
+    // Token contract of each teleoparator has fee
+    // add the fee here
     function depositTokenData(bytes4 teleoperatorSelector, uint256 amount)
         external
         onlyValidUser(teleoperatorSelector, msg.sender)
         onlyValidTeleoperator(teleoperatorSelector)
     {
+        require(!s.locked, "System locked");
         STypes.TeleoperatorUser memory user = s.teleoperatorUser[teleoperatorSelector][msg.sender];
         STypes.Teleoperator memory teleop = s.teleoperators[teleoperatorSelector];
 
@@ -63,15 +61,20 @@ contract UserFacet is Modifiers {
         user.mobileDataEscrowed += amount;
         s.teleoperatorUser[teleoperatorSelector][msg.sender] = user;
         emit Events.dataDeposited(teleoperatorSelector, msg.sender, amount);
-
+        s.locked = false;
     }
 
-    function exitTotalOrParcial(bytes4 teleoperatorSelector, uint88 amount, address userAddress)
+    function exitTotalOrParcial(bytes4 teleoperatorSelector, uint256 amount, address userAddress)
         external
         onlyValidUser(teleoperatorSelector, userAddress)
     {
+        require(!s.locked, "System locked");
+        s.locked = true;
         STypes.TeleoperatorUser memory user = s.teleoperatorUser[teleoperatorSelector][msg.sender];
+        STypes.Teleoperator memory teleop = s.teleoperators[teleoperatorSelector];
 
+        // apply the withdrawal fee set by the teleoperator
+        amount = amount * (100 - teleop.withdrawalFee) / 100;
         if (user.isFrozen) {
             revert Errors.UserIsFrozen(msg.sender);
         }
@@ -86,11 +89,11 @@ contract UserFacet is Modifiers {
             user.mobileDataEscrowed -= amount;
         }
 
-        // mint the token to the user
-
         IDataToken(s.teleoperators[teleoperatorSelector].dataTokenAddress).mint(msg.sender, amount);
 
         s.teleoperatorUser[teleoperatorSelector][msg.sender] = user;
         emit Events.dataWithdrawn(teleoperatorSelector, userAddress, amount);
+
+        s.locked = false;
     }
 }

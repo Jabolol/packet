@@ -24,5 +24,6 @@ library Errors {
     error InsufficientFundsSent();
     error TeleoperatorNotHaveToken();
     error NotEnoughTokenBalance();
+    error FeeTooHigh();
 
 }
