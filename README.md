@@ -100,7 +100,54 @@ blockchain. They can be `forked` from
 
 # Interaction with the Arthera Blockchain
 
-Deployed at [https://arthera.net](https://arthera.net), the Arthera Blockchain a protocol, using DiamondProxy, that enables users to buy and sell mobile data in a decentralized way. It allows users to **buy** and **swap** mobile data from other users, and **sell** their own mobile data to other users. Making the dataMore Liquid and createing a new semiOpen market. Also the interactions P2P are done via a deutch actions. The system acounting is done virtually to save gas, but also can be externalized to a real accounting system. 
+# 🌐 Arthera: Enabling Decentralized Mobile Data Exchange
+
+## [Explore Arthera](https://arthera.net) 🚀
+
+### **Introduction**
+
+Welcome to **Arthera**, a dynamic blockchain network that acts as the foundation for **Packet**, an innovative protocol designed using the **DiamondProxy** pattern. Packet facilitates a decentralized market for mobile data, allowing users to seamlessly **buy**, **swap**, and **sell** mobile data with maximized liquidity and user empowerment.
+
+### **Advantages of Packet on Arthera** 🌟
+
+1. **Enhanced Data Liquidity**: Ensures mobile data is easily accessible and tradable, fostering a liquid market.
+   
+2. **P2P Deutch Auctions**: Engage in P2P interactions through Dutch auction mechanisms, guaranteeing fair pricing and democratized data trading.
+
+3. **Efficient Virtual Accounting**: Minimizes gas fees with a virtual accounting system, while offering the ability to integrate with traditional accounting systems.
+
+4. **Decentralized Semi-Open Market**: Empowers users with a decentralized market to autonomously manage their mobile data transactions.
+
+5. **Immutability and Transparency**: Leverage the power of blockchain for secure, transparent, and immutable transactions.
+
+### **Contract Architecture** 🛠
+
+Dive into our network's smart contract architecture:
+
+- **Diamond**: [0x33568Db9cee48eCe446ff56da507A1dFE37006b3]
+- **DiamondCutFacet**: [0x03426abCD59086fF6c6952667983dc7E6D442AC4]
+- **DiamondLoupeFacet**: [0xAc0a54471ce272B0f8468e1b0f48fA26cD456EF7]
+- **ExchangeFacet**: [0xF14F7b69B6830008ED9Ce3134afEB37C6bf61d05]
+- **OwnerFacet**: [0xdcc3d56db70CE3E439E0674a6c92484eE3513fCD]
+- **TeleoperatorFacet**: [0x60437552677E1422E01bA6ac32F244cbAebfa55F]
+- **UserFacet**: [0xd26bfFaDDabf6aaEf9ca7c75ae02F90Ca3bEF3CB]
+
+#### Join the Revolution!
+
+Get started with Arthera and Packet, and immerse yourself in a realm where mobile data becomes a tradable, accessible, and affordable commodity for all.
+
+#### Connect with Us 💌
+
+We value your feedback and queries! Engage with us and our community through [email](mailto:[email protected]) or explore more on our [website](https://arthera.net).
+
+#### How to Get Involved?
+
+Embark on this journey with Arthera, explore our [website](https://arthera.net), and delve into the world where mobile data becomes a tradable asset, making connectivity more accessible and affordable for all.
+
+#### Feedback & Support
+
+Your feedback is invaluable! 💌 Share your thoughts or get support by [contacting us](mailto:[email protected]).
+
 
 The `BOS` components interact with the Arthera Blockchain using custom hooks
 created with `wagmi`. The hooks are:
