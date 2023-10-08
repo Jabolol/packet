@@ -158,7 +158,7 @@ becomes a tradable, accessible, and affordable commodity for all.
 
 # Showcase
 
-<video src="./assets/packet.mov" controls></video>
+
 
 # Custom hooks
 
