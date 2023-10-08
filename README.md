@@ -20,6 +20,7 @@ exchange.
 - [Custom BOS components](#custom-bos-components)
 - [Interaction with the Arthera Blockchain](#interaction-with-the-arthera-blockchain)
 - [Feedback](#feedback)
+- [Extras](#extras)
 
 # Features
 
@@ -132,3 +133,14 @@ without using the private keys but a expiring token instead.
 When it cames to the Arthera Blockchain, we had to make some changes to the
 smart contracts to make them work with the `BOS` components. Apart from that,
 the integration was seamless. Nothing broke, and everything worked as expected!
+
+# Extras
+
+I encountered a problem when trying to deploy the `BOS` components. `useState`
+and `useEffect` weren't working for me! After having a chat on NEARs Discord, I
+realized that the `bos-gateway` template was heavily outdated.
+
+In order to spare someone else the trouble of finding out what was wrong, I
+created a Pull Request to update the template. You can find it here:
+https://github.com/near-examples/bos-gateway/pull/3. No matter how small the
+change is, it can make a difference!
