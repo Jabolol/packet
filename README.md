@@ -26,7 +26,8 @@ The production build of this project is deployed at
   - [Advantages of Packet 🌟](#advantages-of-packet-)
   - [Contract Architecture 🛠](#contract-architecture-)
   - [Join the Revolution!](#join-the-revolution)
-- [Showcase](#showcase)
+- [Video Showcase](#showcase)
+- [Document](#document)
 - [Custom hooks](#custom-hooks)
 - [Feedback](#feedback)
 - [Extras](#extras)
@@ -156,9 +157,13 @@ Dive into our network's smart contract architecture:
 Get started with Packet, and immerse yourself in a realm where mobile data
 becomes a tradable, accessible, and affordable commodity for all.
 
-# Showcase
+# Video Showcase
 
 https://github.com/Jabolol/packet/assets/74559859/a0a98f03-cdef-4280-87ea-f5e1a63e7516
+
+# Document
+
+You can find the document [here](./assets/Packet.pdf).
 
 # Custom hooks
 
