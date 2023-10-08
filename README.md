@@ -100,7 +100,7 @@ blockchain. They can be `forked` from
 
 # Interaction with the Arthera Blockchain
 
-# 🌐 Arthera: Enabling Decentralized Mobile Data Exchange
+# 🌐 Packet: Enabling Decentralized Mobile Data Exchange
 
 ## [Explore Arthera](https://arthera.net) 🚀
 
@@ -108,7 +108,7 @@ blockchain. They can be `forked` from
 
 Welcome to **Arthera**, a dynamic blockchain network that acts as the foundation for **Packet**, an innovative protocol designed using the **DiamondProxy** pattern. Packet facilitates a decentralized market for mobile data, allowing users to seamlessly **buy**, **swap**, and **sell** mobile data with maximized liquidity and user empowerment.
 
-### **Advantages of Packet on Arthera** 🌟
+### **Advantages of Packet ** 🌟
 
 1. **Enhanced Data Liquidity**: Ensures mobile data is easily accessible and tradable, fostering a liquid market.
    
@@ -134,15 +134,7 @@ Dive into our network's smart contract architecture:
 
 #### Join the Revolution!
 
-Get started with Arthera and Packet, and immerse yourself in a realm where mobile data becomes a tradable, accessible, and affordable commodity for all.
-
-#### Connect with Us 💌
-
-We value your feedback and queries! Engage with us and our community through [email](mailto:[email protected]) or explore more on our [website](https://arthera.net).
-
-#### How to Get Involved?
-
-Embark on this journey with Arthera, explore our [website](https://arthera.net), and delve into the world where mobile data becomes a tradable asset, making connectivity more accessible and affordable for all.
+Get started  Packet, and immerse yourself in a realm where mobile data becomes a tradable, accessible, and affordable commodity for all.
 
 #### Feedback & Support
 
