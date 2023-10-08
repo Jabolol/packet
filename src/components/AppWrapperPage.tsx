@@ -4,6 +4,7 @@ import { MetaTags } from "./MetaTags";
 import styled, { keyframes } from "styled-components";
 import { useEffect, useState } from "react";
 import { WorldTable } from "./WorldTable";
+import { useUserBalance } from "@/hooks/userBalance";
 
 type Props = {
   componentProps?: Record<string, unknown>;
@@ -74,16 +75,13 @@ const Component = ({ src }: { src: string }) => (
 
 export function AppWrapperPage(props: Props) {
   const [ready, setReady] = useState(false);
+  const { data, isError, isLoading } = useUserBalance();
 
   useEffect(() => {
     const fn = () => {
       setReady(true);
     };
     window.addEventListener("load", fn);
-
-    return () => {
-      window.removeEventListener("load", fn);
-    };
   }, []);
 
   if (!ready) {

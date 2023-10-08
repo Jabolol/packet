@@ -12,9 +12,9 @@ const generateRandomEthereumAddress = () =>
 const generateRandomData = () =>
   Array.from({ length: 50 }, () => ({
     mebibytes: Math.floor(Math.random() * 10000),
-    date: new Date().toLocaleDateString(),
+    block: (Math.random() * 1000000).toFixed(0),
     from: generateRandomEthereumAddress(),
-    to: generateRandomEthereumAddress(),
+    event: ["purchase", "sale", "transfer"][Math.floor(Math.random() * 3)],
   }));
 
 const data = generateRandomData();
@@ -23,16 +23,16 @@ const columns: {
   [k: string]: string | ((k: typeof data[number]) => unknown);
 }[] = [
   {
-    name: "From",
+    name: "Buyer",
     selector: (row) => row.from,
   },
   {
-    name: "To",
-    selector: (row) => row.to,
+    name: "Event",
+    selector: (row) => row.event,
   },
   {
-    name: "Date",
-    selector: (row) => row.date,
+    name: "Block Number",
+    selector: (row) => row.block,
   },
   {
     name: "GiB",
