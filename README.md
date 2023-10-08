@@ -106,7 +106,7 @@ blockchain. They can be `forked` from
 
 ### **Introduction**
 
-Welcome to **Arthera**, a dynamic blockchain network that acts as the foundation for **Packet**, an innovative protocol designed using the **DiamondProxy** pattern. Packet facilitates a decentralized market for mobile data, allowing users to seamlessly **buy**, **swap**, and **sell** mobile data with maximized liquidity and user empowerment.
+Welcome to **Arthera**, a dynamic blockchain network that acts as the foundation for **Packet**, an innovative protocol designed using the **DiamondProxy** pattern. Packet facilitates a semi-decentralized market for mobile data, allowing users to seamlessly **buy**, **swap**, and **sell** mobile data with maximized liquidity and user empowerment.
 
 ### **Advantages of Packet ** 🌟
 
@@ -135,10 +135,6 @@ Dive into our network's smart contract architecture:
 #### Join the Revolution!
 
 Get started  Packet, and immerse yourself in a realm where mobile data becomes a tradable, accessible, and affordable commodity for all.
-
-#### Feedback & Support
-
-Your feedback is invaluable! 💌 Share your thoughts or get support by [contacting us](mailto:[email protected]).
 
 
 The `BOS` components interact with the Arthera Blockchain using custom hooks
