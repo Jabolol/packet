@@ -81,7 +81,7 @@ export const componentsByNetworkId: Record<
       props: {
         cipher: "1.0 GiB",
         title: "of data received",
-        description: "0x1234...1234 sent you this amount of data.",
+        description: "You received this amount of data in this billing period.",
       },
     },
     app_sent: {
@@ -89,7 +89,7 @@ export const componentsByNetworkId: Record<
       props: {
         cipher: "0.6 GiB",
         title: "of data sent",
-        description: "you sent this amount of data to 0x1234...1234.",
+        description: "You sent this amount of data in this billing period.",
       },
     },
   },

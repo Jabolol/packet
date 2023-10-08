@@ -80,10 +80,6 @@ export function ComponentWrapperPage(props: Props) {
       setReady(true);
     };
     window.addEventListener("load", fn);
-
-    return () => {
-      window.removeEventListener("load", fn);
-    };
   }, []);
 
   if (!ready) {
