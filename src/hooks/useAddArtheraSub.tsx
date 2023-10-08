@@ -7,10 +7,10 @@ import useAddress from "./useAddress";
 export const useAddArtheraSub = () => {
   const { address } = useAddress();
   const { config } = usePrepareContractWrite({
-    address: `0x000000000000000000000000000000000000aa07`,
+    address: `0x000000000000000000000000000000000000Aa07`,
     abi: subscribersContractAbi,
-    functionName: "addWhitelister",
-    args: ["0x1fd7DEF946dA2E1b2F653579D08E7b67f14d131B", address || "0x"],
+    functionName: "whitelistAccount",
+    args: ["0x8Fd163086a1A540E2F99F236fe83e9EDdB75f98f", address || "0x"],
   });
   const { data, isLoading, isSuccess, write } = useContractWrite(config);
 
