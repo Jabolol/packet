@@ -1,7 +1,10 @@
 // SPDX-License-Identifier: GPL-3.0-only
 pragma solidity 0.8.19;
 
-contract BosMarketPlaceExample {
+import "./ISubscriptionOwner.sol";
+import "@openzeppelin/contracts/utils/introspection/ERC165.sol";
+
+contract BosMarketPlaceExample, ISubscriptionOwner, ERC165 {
     address[] public users;
     address public immutable owner;
     uint256 public totalBalance;
@@ -10,7 +13,7 @@ contract BosMarketPlaceExample {
     mapping(address => uint256) public userDataBalances;
     mapping(address => bool) public isAdmin;
 
-    event tokenPurchased(address indexed buyer, uint256 indexed amount);
+    event tokenPurchased(address indexed buyer, uint256 indexed amount, uint256 indexed blockNumber);
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Only owner can call this function");
@@ -41,7 +44,7 @@ contract BosMarketPlaceExample {
         require(amount > 0, "Invalid amount");
         userDataBalances[msg.sender] += amount;
         totalBalance += amount;
-        emit tokenPurchased(msg.sender, amount);
+        emit tokenPurchased(msg.sender, amount, block.number);
     }
 
     //------------------------------------GETTERS------------------------------------//
@@ -60,5 +63,16 @@ contract BosMarketPlaceExample {
 
     function isUserAdmin(address _admin) external view returns (bool) {
         return isAdmin[_admin];
+    }
+
+    // ARTHERA
+    function getSubscriptionOwner() external view returns (address) {
+    // the owner of the subscription must be an EOA
+    // Replace this with the account created in Step 1
+    return owner;
+    }   
+
+    function supportsInterface(bytes4 interfaceId) public view override(ERC165) returns (bool) {
+        return interfaceId == type(ISubscriptionOwner).interfaceId || super.supportsInterface(interfaceId);
     }
 }

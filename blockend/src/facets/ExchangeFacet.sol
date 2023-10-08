@@ -11,7 +11,7 @@ import {ERC20} from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import {Events} from "../libraries/Events.sol";
 
 contract ExchangeFacet is Modifiers {
-    function buyData(bytes4 teleoperatorSelector, uint256 megaBytesToBuy)
+    function buyDataToTelco(bytes4 teleoperatorSelector, uint256 megaBytesToBuy)
         external
         payable
         onlyValidTeleoperator(teleoperatorSelector)
@@ -20,10 +20,6 @@ contract ExchangeFacet is Modifiers {
         require(!s.locked);
         s.locked = true;
         STypes.Teleoperator memory teleop = s.teleoperators[teleoperatorSelector];
-
-        // cost calculated with price of ETH
-
-        // price need to be fetched outide the contract
 
         uint256 cost = teleop.pricePerMegaByte * megaBytesToBuy; // cost in eth
 
@@ -46,7 +42,9 @@ contract ExchangeFacet is Modifiers {
         uint256 endBlock,
         uint256 megaBytesToSell,
         bytes4 teleoperatorSelector
-    ) external {}
+    ) external {
+        _startAuction(startPrice, reservePrice, endBlock, megaBytesToSell, teleoperatorSelector);
+    }
 
     function _startAuction(
         uint256 startPrice,
