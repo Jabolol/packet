@@ -98,17 +98,26 @@ const ButtonStyle = styled.button`
   margin: 10px;
   cursor: pointer;
   width: 100%;
-  max-width: 320px;
+  max-width: 340px;
+
+  &:disabled {
+    mouse-events: none;
+    border: 2px solid gray;
+    background-color: white;
+    color: gray;
+    cursor: not-allowed;
+  }
 
   &:hover {
-    border: 2px solid #0e6efd;
+    border: 2px solid ${(props) => props.disabled ? "gray" : "#0e6efd"};
     background-color: white;
-    color: #0e6efd;
+    color: ${(props) => props.disabled ? "gray" : "#0e6efd"};
   }
 `;
 
 export function AppWrapperPage(props: Props) {
   const [ready, setReady] = useState(false);
+  const [clicked, setClicked] = useState(false);
   const { data, isError, isLoading } = useUserBalance();
   const { write, data: aData, isSuccess: aSuccess } = useAddArtheraSub();
 
@@ -140,10 +149,15 @@ export function AppWrapperPage(props: Props) {
           <Component src={"app_received"} />
           {!isLoading && !isError && <AvailableData amount={Number(data)} />}
         </FeatureWrap>
-        <ButtonStyle onClick={() => write?.()}>
-          Subscribe to Contract via Arcera
+        <ButtonStyle
+          disabled={clicked}
+          onClick={() => {
+            write && write();
+            setClicked(true);
+          }}
+        >
+          {clicked ? "Subscription sent!" : "Subscribe to Arthera"}
         </ButtonStyle>
-        {aSuccess && <p>Success: {JSON.stringify(aData)}</p>}
       </Wrapper>
     </>
   );
