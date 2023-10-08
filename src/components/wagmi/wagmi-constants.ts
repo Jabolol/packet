@@ -25,6 +25,12 @@ export const BOSExampleAbi = [
                 name: "amount",
                 type: "uint256",
             },
+            {
+                indexed: true,
+                internalType: "uint256",
+                name: "blockNumber",
+                type: "uint256",
+            },
         ],
         name: "tokenPurchased",
         type: "event",
@@ -266,4 +272,4 @@ export const BOSExampleAbi = [
         stateMutability: "view",
         type: "function",
     },
-] as const;
+];
