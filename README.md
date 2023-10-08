@@ -138,11 +138,8 @@ Get started  Packet, and immerse yourself in a realm where mobile data becomes a
 
 ### **Packet DEMO VIDEO**
 
-<a href="packet demo video" target="_blank">
-  <img src="./assets/packet.mov" alt="IMAGE ALT TEXT" width="240" height="180" border="10" />
-</a>
 
-
+[Download Video](./assets/packet.mov)
 
 The `BOS` components interact with the Arthera Blockchain using custom hooks
 created with `wagmi`. The hooks are:
