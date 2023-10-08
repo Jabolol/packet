@@ -1,3 +1,4 @@
+import { useTotalUsers } from "@/hooks/useTotalUsers";
 import DataTable, { Alignment } from "react-data-table-component";
 import styled from "styled-components";
 
@@ -50,37 +51,45 @@ const WrapperContainer = styled.div`
 `;
 
 export function WorldTable() {
-  return (
-    <WrapperContainer>
-      <DataTable
-        title="Real-time Blockchain Transactions"
-        columns={columns.map((col) => ({
-          ...col,
-          sortable: true,
-          reorder: true,
-        }))}
-        data={data}
-        pagination
-        responsive
-        subHeaderAlign={Alignment.RIGHT}
-        subHeaderWrap
-        customStyles={{
-          header: {
-            style: {
-              color: "#0e6efd",
-              fontWeight: "bold",
-              fontSize: "24px",
+  const { data: users, isLoading } = useTotalUsers();
+
+  return (!isLoading &&
+    (
+      <WrapperContainer>
+        <DataTable
+          title="Real-time Blockchain Transactions"
+          columns={columns.map((col) => ({
+            ...col,
+            sortable: true,
+            reorder: true,
+          }))}
+          data={data.map((row) => ({
+            ...row,
+            from: (users as string[])[
+              Math.floor(Math.random() * (users as string[]).length)
+            ],
+          }))}
+          pagination
+          responsive
+          subHeaderAlign={Alignment.RIGHT}
+          subHeaderWrap
+          customStyles={{
+            header: {
+              style: {
+                color: "#0e6efd",
+                fontWeight: "bold",
+                fontSize: "24px",
+              },
             },
-          },
-          head: {
-            style: {
-              color: "#0e6efd",
-              fontWeight: "bold",
-              fontSize: "16px",
+            head: {
+              style: {
+                color: "#0e6efd",
+                fontWeight: "bold",
+                fontSize: "16px",
+              },
             },
-          },
-        }}
-      />
-    </WrapperContainer>
-  );
+          }}
+        />
+      </WrapperContainer>
+    ));
 }

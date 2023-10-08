@@ -1,5 +1,5 @@
 import { VmComponent } from "@/components/vm/VmComponent";
-import { componentsByNetworkId } from "@/data/bos-components";
+import { componentsByNetworkId, getComponent } from "@/data/bos-components";
 import { MetaTags } from "./MetaTags";
 import styled, { keyframes } from "styled-components";
 import { useEffect, useState } from "react";
@@ -73,6 +73,17 @@ const Component = ({ src }: { src: string }) => (
   />
 );
 
+const AvailableData = ({ amount }: { amount: number }) => (
+  <VmComponent
+    src={getComponent`DataWidget`}
+    props={{
+      cipher: `${amount} GiB`,
+      title: "is your balance.",
+      description: "You can use this data to access the internet.",
+    }}
+  />
+);
+
 export function AppWrapperPage(props: Props) {
   const [ready, setReady] = useState(false);
   const { data, isError, isLoading } = useUserBalance();
@@ -103,7 +114,7 @@ export function AppWrapperPage(props: Props) {
         <FeatureWrap>
           <Component src={"app_sent"} />
           <Component src={"app_received"} />
-          <Component src={"data_mean"} />
+          {!isLoading && !isError && <AvailableData amount={Number(data)} />}
         </FeatureWrap>
       </Wrapper>
     </>

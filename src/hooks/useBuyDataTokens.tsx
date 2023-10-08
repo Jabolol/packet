@@ -7,7 +7,7 @@ export const useBuyData = () => {
   const [amount, setAmount] = useState(0);
   const { address } = useAccount();
   const { config } = usePrepareContractWrite({
-    address: `0x111c7bCC5c617667DF9a296867401163490aeb7A`,
+    address: `0x8925b3d8Cb999fdb8850E715588Ba22028E1C831`,
     abi: BOSExampleAbi,
     functionName: "buyData",
     args: [BigInt(amount)],

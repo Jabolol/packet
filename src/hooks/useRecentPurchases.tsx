@@ -14,7 +14,7 @@ export const useHistory = () => {
     const fetchData = async () => {
       try {
         const fetchedLogs = await publicClientCustom.getLogs({
-          address: `0x111c7bCC5c617667DF9a296867401163490aeb7A`,
+          address: `0x8925b3d8Cb999fdb8850E715588Ba22028E1C831`,
           event: parseAbiItem(
             "event tokenPurchased(address indexed buyer, uint256 indexed amount)",
           ),
@@ -32,7 +32,7 @@ export const useHistory = () => {
   }, []);
 
   useContractEvent({
-    address: `0x111c7bCC5c617667DF9a296867401163490aeb7A`,
+    address: `0x8925b3d8Cb999fdb8850E715588Ba22028E1C831`,
     abi: BOSExampleAbi,
     eventName: "tokenPurchased",
     listener(log) {
