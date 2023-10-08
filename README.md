@@ -13,6 +13,9 @@ other users, without worrying about the Carrier. This is possible thanks to the
 partnerships between them, allowing for a **small** fee to be charged for the
 exchange.
 
+The production build of this project is deployed at
+[https://packet.vercel.app/](https://packet.vercel.app/).
+
 # Contents
 
 - [Features](#features)
