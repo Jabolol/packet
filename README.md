@@ -125,6 +125,10 @@ The `BOS` components are a great way to build reusable components that can be
 used in multiple projects. They are easy to use and easy to deploy. The
 possibilities are endless.
 
+One way to improve the experience would be to have TypeScript support, implement
+dark mode in the `sandbox` editor, and have another way to deploy the components
+without using the private keys but a expiring token instead.
+
 When it cames to the Arthera Blockchain, we had to make some changes to the
 smart contracts to make them work with the `BOS` components. Apart from that,
 the integration was seamless. Nothing broke, and everything worked as expected!
