@@ -100,6 +100,8 @@ blockchain. They can be `forked` from
 
 # Interaction with the Arthera Blockchain
 
+Deployed at [https://arthera.net](https://arthera.net), the Arthera Blockchain a protocol, using DiamondProxy, that enables users to buy and sell mobile data in a decentralized way. It allows users to **buy** and **swap** mobile data from other users, and **sell** their own mobile data to other users. Making the dataMore Liquid and createing a new semiOpen market. Also the interactions P2P are done via a deutch actions. The system acounting is done virtually to save gas, but also can be externalized to a real accounting system. 
+
 The `BOS` components interact with the Arthera Blockchain using custom hooks
 created with `wagmi`. The hooks are:
 
