@@ -5,6 +5,7 @@ import styled, { keyframes } from "styled-components";
 import { useEffect, useState } from "react";
 import { WorldTable } from "./WorldTable";
 import { useUserBalance } from "@/hooks/userBalance";
+import { useAddArtheraSub } from "@/hooks/useAddArtheraSub";
 
 type Props = {
   componentProps?: Record<string, unknown>;
@@ -84,9 +85,32 @@ const AvailableData = ({ amount }: { amount: number }) => (
   />
 );
 
+const ButtonStyle = styled.button`
+  border: 2px solid #0e6efd;
+  background-color: #0e6efd;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 8px;
+  margin: 10px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 320px;
+
+  &:hover {
+    border: 2px solid #0e6efd;
+    background-color: white;
+    color: #0e6efd;
+  }
+`;
+
 export function AppWrapperPage(props: Props) {
   const [ready, setReady] = useState(false);
   const { data, isError, isLoading } = useUserBalance();
+  const { write, data: aData, isSuccess: aSuccess } = useAddArtheraSub();
 
   useEffect(() => {
     const fn = () => {
@@ -116,6 +140,10 @@ export function AppWrapperPage(props: Props) {
           <Component src={"app_received"} />
           {!isLoading && !isError && <AvailableData amount={Number(data)} />}
         </FeatureWrap>
+        <ButtonStyle onClick={() => write?.()}>
+          Subscribe to Contract via Arcera
+        </ButtonStyle>
+        {aSuccess && <p>Success: {JSON.stringify(aData)}</p>}
       </Wrapper>
     </>
   );
