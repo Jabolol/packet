@@ -22,6 +22,12 @@ The production build of this project is deployed at
 - [Getting Started](#getting-started)
 - [Custom BOS components](#custom-bos-components)
 - [Interaction with the Arthera Blockchain](#interaction-with-the-arthera-blockchain)
+  - [Introduction](#introduction)
+  - [Advantages of Packet 🌟](#advantages-of-packet-)
+  - [Contract Architecture 🛠](#contract-architecture-)
+  - [Join the Revolution!](#join-the-revolution)
+- [Showcase](#showcase)
+- [Custom hooks](#custom-hooks)
 - [Feedback](#feedback)
 - [Extras](#extras)
 
@@ -100,46 +106,61 @@ blockchain. They can be `forked` from
 
 # Interaction with the Arthera Blockchain
 
-# 🌐 Packet: Enabling Decentralized Mobile Data Exchange
+### Introduction
 
-## [Explore Arthera](https://arthera.net) 🚀
+Welcome to **Arthera**, a dynamic blockchain network that acts as the foundation
+for **Packet**, an innovative protocol designed using the **DiamondProxy**
+pattern. Packet facilitates a semi-decentralized market for mobile data,
+allowing users to seamlessly **buy**, **swap**, and **sell** mobile data with
+maximized liquidity and user empowerment.
 
-### **Introduction**
+### Advantages of Packet 🌟
 
-Welcome to **Arthera**, a dynamic blockchain network that acts as the foundation for **Packet**, an innovative protocol designed using the **DiamondProxy** pattern. Packet facilitates a semi-decentralized market for mobile data, allowing users to seamlessly **buy**, **swap**, and **sell** mobile data with maximized liquidity and user empowerment.
+1. **Enhanced Data Liquidity**: Ensures mobile data is easily accessible and
+   tradable, fostering a liquid market.
 
-### **Advantages of Packet ** 🌟
+2. **P2P Deutch Auctions**: Engage in P2P interactions through Dutch auction
+   mechanisms, guaranteeing fair pricing and democratized data trading.
 
-1. **Enhanced Data Liquidity**: Ensures mobile data is easily accessible and tradable, fostering a liquid market.
-   
-2. **P2P Deutch Auctions**: Engage in P2P interactions through Dutch auction mechanisms, guaranteeing fair pricing and democratized data trading.
+3. **Efficient Virtual Accounting**: Minimizes gas fees with a virtual
+   accounting system, while offering the ability to integrate with traditional
+   accounting systems.
 
-3. **Efficient Virtual Accounting**: Minimizes gas fees with a virtual accounting system, while offering the ability to integrate with traditional accounting systems.
+4. **Decentralized Semi-Open Market**: Empowers users with a decentralized
+   market to autonomously manage their mobile data transactions.
 
-4. **Decentralized Semi-Open Market**: Empowers users with a decentralized market to autonomously manage their mobile data transactions.
+5. **Immutability and Transparency**: Leverage the power of blockchain for
+   secure, transparent, and immutable transactions.
 
-5. **Immutability and Transparency**: Leverage the power of blockchain for secure, transparent, and immutable transactions.
-
-### **Contract Architecture** 🛠
+### Contract Architecture 🛠
 
 Dive into our network's smart contract architecture:
 
-- **Diamond**: [0x33568Db9cee48eCe446ff56da507A1dFE37006b3]
-- **DiamondCutFacet**: [0x03426abCD59086fF6c6952667983dc7E6D442AC4]
-- **DiamondLoupeFacet**: [0xAc0a54471ce272B0f8468e1b0f48fA26cD456EF7]
-- **ExchangeFacet**: [0xF14F7b69B6830008ED9Ce3134afEB37C6bf61d05]
-- **OwnerFacet**: [0xdcc3d56db70CE3E439E0674a6c92484eE3513fCD]
-- **TeleoperatorFacet**: [0x60437552677E1422E01bA6ac32F244cbAebfa55F]
-- **UserFacet**: [0xd26bfFaDDabf6aaEf9ca7c75ae02F90Ca3bEF3CB]
+- **Diamond**:
+  [0x33568Db9cee48eCe446ff56da507A1dFE37006b3](0x33568Db9cee48eCe446ff56da507A1dFE37006b3)
+- **DiamondCutFacet**:
+  [0x03426abCD59086fF6c6952667983dc7E6D442AC4](0x03426abCD59086fF6c6952667983dc7E6D442AC4)
+- **DiamondLoupeFacet**:
+  [0xAc0a54471ce272B0f8468e1b0f48fA26cD456EF7](0xAc0a54471ce272B0f8468e1b0f48fA26cD456EF7)
+- **ExchangeFacet**:
+  [0xF14F7b69B6830008ED9Ce3134afEB37C6bf61d05](0xF14F7b69B6830008ED9Ce3134afEB37C6bf61d05)
+- **OwnerFacet**:
+  [0xdcc3d56db70CE3E439E0674a6c92484eE3513fCD](0xdcc3d56db70CE3E439E0674a6c92484eE3513fCD)
+- **TeleoperatorFacet**:
+  [0x60437552677E1422E01bA6ac32F244cbAebfa55F](0x60437552677E1422E01bA6ac32F244cbAebfa55F)
+- **UserFacet**:
+  [0xd26bfFaDDabf6aaEf9ca7c75ae02F90Ca3bEF3CB](0xd26bfFaDDabf6aaEf9ca7c75ae02F90Ca3bEF3CB)
 
 #### Join the Revolution!
 
-Get started  Packet, and immerse yourself in a realm where mobile data becomes a tradable, accessible, and affordable commodity for all.
+Get started with Packet, and immerse yourself in a realm where mobile data
+becomes a tradable, accessible, and affordable commodity for all.
 
-### **Packet DEMO VIDEO**
+# Showcase
 
+<video src="./assets/packet.mov" controls></video>
 
-[Download Video](./assets/packet.mov)
+# Custom hooks
 
 The `BOS` components interact with the Arthera Blockchain using custom hooks
 created with `wagmi`. The hooks are:
