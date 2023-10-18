@@ -1,5 +1,11 @@
 # Packet
 
+> **Note**
+> 
+> **1st place** for the
+> [`NEAR's BOS Bounty`](https://x.com/BlockandChange/status/1711175532899897844?s=20)
+> and [`Arthera's Best DeFi App`](https://x.com/BlockandChange/status/1711175536079184212?s=20) at **Block & Change** Madrid, sponsored by **Telefónica**
+
 A decentralized Mobile Data Marketplace powered by
 [`NEAR's BOS`](https://near.org) and the
 [`Arthera Blockchain`](https://arthera.net).
